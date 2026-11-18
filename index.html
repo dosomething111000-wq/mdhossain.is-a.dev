@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080d1a">
+<meta name="description" content="MD Hossain - Personal Portfolio, Projects and Digital Journey.">
+<title>MD Hossain | Personal Website</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg:#080d1a;
+  --surface:#111a2d;
+  --card:#121e34;
+  --text:#f5f7ff;
+  --muted:#a5b1c8;
+  --primary:#6d8cff;
+  --secondary:#a477ff;
+  --border:rgba(255,255,255,.09);
+  --shadow:0 15px 45px rgba(0,0,0,.2);
+}
+body.light {
+  --bg:#f5f7fc;
+  --surface:#ffffff;
+  --card:#ffffff;
+  --text:#142039;
+  --muted:#66738c;
+  --primary:#4169e1;
+  --secondary:#8755db;
+  --border:rgba(20,32,57,.12);
+  --shadow:0 15px 40px rgba(20,32,57,.07);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:'Inter','Hind Siliguri',sans-serif;
+  line-height:1.7;transition:.25s;
+}
+body.bn{font-family:'Hind Siliguri',sans-serif}
+a{text-decoration:none;color:inherit}
+button{font:inherit;cursor:pointer}
+.container{width:min(1120px,90%);margin:auto}
+header{
+  position:sticky;top:0;z-index:20;
+  background:color-mix(in srgb,var(--bg) 85%,transparent);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);
+}
+nav{height:75px;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.logo{font-size:23px;font-weight:800;letter-spacing:-1px}
+.logo span{color:var(--primary)}
+.navlinks{display:flex;gap:23px;align-items:center}
+.navlinks a{font-size:13px;color:var(--muted);font-weight:600}
+.navlinks a:hover{color:var(--primary)}
+.actions{display:flex;gap:8px}
+.action{
+  border:1px solid var(--border);background:var(--surface);
+  color:var(--text);border-radius:12px;padding:9px 12px;
+}
+.menu{display:none}
+.hero{padding:105px 0 85px;position:relative;overflow:hidden}
+.hero:before{
+  content:"";position:absolute;width:450px;height:450px;
+  background:var(--primary);filter:blur(170px);opacity:.16;
+  top:-180px;right:-120px;pointer-events:none;
+}
+.hero-content{position:relative;max-width:780px}
+.tag{
+  display:inline-flex;padding:7px 14px;border-radius:30px;
+  color:var(--primary);background:rgba(109,140,255,.12);
+  font-size:13px;font-weight:700;margin-bottom:22px;
+}
+h1{font-size:clamp(42px,8vw,76px);line-height:1.1;letter-spacing:-3px;margin-bottom:20px}
+.gradient{
+  background:linear-gradient(100deg,var(--primary),var(--secondary));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero p{color:var(--muted);font-size:17px;max-width:610px}
+.hero-buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:12px 20px;border-radius:12px;font-weight:700;font-size:14px;
+  border:1px solid var(--border);transition:.2s;
+}
+.btn.primary{background:linear-gradient(100deg,var(--primary),var(--secondary));color:white;border:0}
+.btn:hover{transform:translateY(-3px)}
+section{padding:75px 0}
+.section-head{margin-bottom:32px}
+.eyebrow{color:var(--primary);font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase}
+h2{font-size:clamp(28px,5vw,40px);letter-spacing:-1px;margin-top:6px}
+.section-desc{color:var(--muted);margin-top:8px;max-width:650px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{
+  background:var(--card);border:1px solid var(--border);
+  padding:25px;border-radius:20px;box-shadow:var(--shadow);
+  transition:.25s;
+}
+.card:hover{transform:translateY(-5px);border-color:var(--primary)}
+.card-icon{font-size:27px;margin-bottom:14px}
+.card h3{font-size:18px;margin-bottom:8px}
+.card p{font-size:14px;color:var(--muted)}
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:35px;align-items:center}
+.about-text{color:var(--muted)}
+.info-box{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.info-item{background:var(--surface);border:1px solid var(--border);padding:17px;border-radius:15px}
+.info-item small{display:block;color:var(--muted);font-size:12px}
+.info-item strong{font-size:14px;overflow-wrap:anywhere}
+.skills{display:flex;flex-wrap:wrap;gap:11px}
+.skill{
+  padding:10px 16px;border:1px solid var(--border);
+  background:var(--surface);border-radius:12px;font-size:14px;font-weight:600;
+}
+.project-link{display:inline-block;color:var(--primary);font-size:13px;font-weight:700;margin-top:17px}
+.gallery-note{
+  border:1px dashed var(--border);padding:40px 20px;
+  border-radius:20px;text-align:center;color:var(--muted);
+}
+.contact-box{
+  padding:40px;border-radius:24px;
+  background:linear-gradient(120deg,rgba(109,140,255,.15),rgba(164,119,255,.12));
+  border:1px solid var(--border);
+}
+.contact-links{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+footer{padding:30px 0;border-top:1px solid var(--border);text-align:center;color:var(--muted);font-size:13px}
+footer strong{color:var(--primary)}
+.reveal{opacity:0;transform:translateY(18px);transition:.6s}
+.reveal.show{opacity:1;transform:none}
+@media(max-width:850px){
+ .navlinks{display:none;position:absolute;top:75px;left:0;right:0;
+ background:var(--surface);padding:20px 5%;flex-direction:column;align-items:flex-start;
+ border-bottom:1px solid var(--border)}
+ .navlinks.open{display:flex}
+ .menu{display:block}
+ .grid{grid-template-columns:repeat(2,1fr)}
+ .about-grid{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+ .hero{padding:75px 0 60px}
+ h1{letter-spacing:-2px}
+ section{padding:55px 0}
+ .grid{grid-template-columns:1fr}
+ .contact-box{padding:25px}
+ .info-box{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+
+<body>
+<header>
+ <div class="container">
+  <nav>
+   <a class="logo" href="#home">MD <span>HOSSAIN.</span></a>
+   <div class="navlinks" id="navlinks">
+    <a href="#home" data-en="Home" data-bn="হোম">Home</a>
+    <a href="#about" data-en="About" data-bn="আমার সম্পর্কে">About</a>
+    <a href="#skills" data-en="Skills" data-bn="দক্ষতা">Skills</a>
+    <a href="#projects" data-en="Projects" data-bn="প্রজেক্ট">Projects</a>
+    <a href="#gallery" data-en="Gallery" data-bn="গ্যালারি">Gallery</a>
+    <a href="#contact" data-en="Contact" data-bn="যোগাযোগ">Contact</a>
+   </div>
+   <div class="actions">
+    <button class="action" id="langBtn" aria-label="Change language">বাংলা</button>
+    <button class="action" id="themeBtn" aria-label="Change theme">☀️</button>
+    <button class="action menu" id="menuBtn" aria-label="Open menu">☰</button>
+   </div>
+  </nav>
+ </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+ <div class="container">
+  <div class="hero-content reveal">
+   <div class="tag" data-en="✦ Welcome to my personal website" data-bn="✦ আমার ব্যক্তিগত ওয়েবসাইটে স্বাগতম">✦ Welcome to my personal website</div>
+   <h1><span data-en="Hi, I'm" data-bn="হ্যালো, আমি">Hi, I'm</span><br><span class="gradient">MD Hossain</span></h1>
+   <p data-en="A student, learner and technology enthusiast. I believe in learning new things, building meaningful projects and improving every day." data-bn="আমি একজন শিক্ষার্থী, নতুন কিছু শিখতে ভালোবাসি এবং প্রযুক্তি নিয়ে কাজ করতে আগ্রহী। প্রতিদিন নিজেকে আরও উন্নত করার চেষ্টা করি।">A student, learner and technology enthusiast. I believe in learning new things, building meaningful projects and improving every day.</p>
+   <div class="hero-buttons">
+    <a class="btn primary" href="#projects" data-en="Explore My Work ↗" data-bn="আমার কাজ দেখুন ↗">Explore My Work ↗</a>
+    <a class="btn" href="#contact" data-en="Contact Me" data-bn="যোগাযোগ করুন">Contact Me</a>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="about">
+ <div class="container">
+  <div class="section-head reveal">
+   <div class="eyebrow" data-en="Get to know me" data-bn="আমার পরিচয়">Get to know me</div>
+   <h2 data-en="About Me" data-bn="আমার সম্পর্কে">About Me</h2>
+  </div>
+  <div class="about-grid">
+   <p class="about-text reveal" data-en="I'm MD Hossain. I enjoy exploring technology, learning useful skills and turning ideas into real projects. This website is my personal space to share my journey, interests and work. I'm always open to learning, collaborating and creating something meaningful." data-bn="আমি MD Hossain। প্রযুক্তি সম্পর্কে জানতে, নতুন দক্ষতা অর্জন করতে এবং নিজের আইডিয়াকে বাস্তব প্রজেক্টে রূপ দিতে ভালোবাসি। এই ওয়েবসাইটে আমার পরিচয়, আগ্রহ ও কাজগুলো তুলে ধরেছি।">I'm MD Hossain. I enjoy exploring technology, learning useful skills and turning ideas into real projects. This website is my personal space to share my journey, interests and work. I'm always open to learning, collaborating and creating something meaningful.</p>
+   <div class="info-box reveal">
+    <div class="info-item"><small data-en="Name" data-bn="নাম">Name</small><strong>MD Hossain</strong></div>
+    <div class="info-item"><small data-en="Role" data-bn="পরিচয়">Role</small><strong data-en="Student" data-bn="শিক্ষার্থী">Student</strong></div>
+    <div class="info-item"><small data-en="Country" data-bn="দেশ">Country</small><strong>Bangladesh</strong></div>
+    <div class="info-item"><small data-en="Interests" data-bn="আগ্রহ">Interests</small><strong>Technology & Learning</strong></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="skills">
+ <div class="container">
+  <div class="section-head reveal">
+   <div class="eyebrow" data-en="What I explore" data-bn="যেসব বিষয়ে আগ্রহী">What I explore</div>
+   <h2 data-en="Skills & Interests" data-bn="দক্ষতা ও আগ্রহ">Skills & Interests</h2>
+   <p class="section-desc" data-en="A collection of areas I enjoy learning and exploring." data-bn="যেসব বিষয়ে শিখতে ও কাজ করতে ভালো লাগে।">A collection of areas I enjoy learning and exploring.</p>
+  </div>
+  <div class="skills reveal">
+   <span class="skill">💻 Technology</span>
+   <span class="skill">🌐 Web Development</span>
+   <span class="skill">📱 Android Apps</span>
+   <span class="skill">🎨 UI/UX Design</span>
+   <span class="skill">🤖 Artificial Intelligence</span>
+   <span class="skill">📚 Learning</span>
+   <span class="skill">🚀 Creativity</span>
+   <span class="skill">⚡ Productivity</span>
+  </div>
+ </div>
+</section>
+
+<section id="interests">
+ <div class="container">
+  <div class="section-head reveal">
+   <div class="eyebrow">My world</div>
+   <h2 data-en="My Interests" data-bn="আমার আগ্রহ">My Interests</h2>
+  </div>
+  <div class="grid">
+   <article class="card reveal"><div class="card-icon">💡</div><h3 data-en="Technology" data-bn="প্রযুক্তি">Technology</h3><p data-en="Discovering new technologies and digital tools." data-bn="নতুন প্রযুক্তি ও ডিজিটাল টুল সম্পর্কে জানা।">Discovering new technologies and digital tools.</p></article>
+   <article class="card reveal"><div class="card-icon">📖</div><h3 data-en="Education" data-bn="শিক্ষা">Education</h3><p data-en="Learning new concepts and building knowledge." data-bn="নতুন বিষয় শেখা এবং জ্ঞান বৃদ্ধি করা।">Learning new concepts and building knowledge.</p></article>
+   <article class="card reveal"><div class="card-icon">🚀</div><h3 data-en="Innovation" data-bn="উদ্ভাবন">Innovation</h3><p data-en="Turning creative ideas into useful solutions." data-bn="সৃজনশীল আইডিয়াকে কার্যকর সমাধানে রূপ দেওয়া।">Turning creative ideas into useful solutions.</p></article>
+  </div>
+ </div>
+</section>
+
+<section id="projects">
+ <div class="container">
+  <div class="section-head reveal">
+   <div class="eyebrow" data-en="Things I build" data-bn="আমার তৈরি কাজ">Things I build</div>
+   <h2 data-en="Featured Projects" data-bn="আমার প্রজেক্ট">Featured Projects</h2>
+   <p class="section-desc" data-en="Some projects and ideas from my digital journey." data-bn="আমার ডিজিটাল যাত্রার কিছু প্রজেক্ট ও আইডিয়া।">Some projects and ideas from my digital journey.</p>
+  </div>
+  <div class="grid">
+   <article class="card reveal"><div class="card-icon">📊</div><h3>Student Life Tracker</h3><p data-en="A personal productivity and daily habit tracking concept." data-bn="দৈনন্দিন অভ্যাস ও ব্যক্তিগত উন্নতি ট্র্যাক করার ধারণা।">A personal productivity and daily habit tracking concept.</p><a class="project-link" href="https://github.com/dosomething111000-wq" target="_blank" rel="noopener">GitHub ↗</a></article>
+   <article class="card reveal"><div class="card-icon">🏠</div><h3>Mess Hisab</h3><p data-en="A simple idea for managing shared living expenses." data-bn="একসঙ্গে থাকার খরচের হিসাব রাখার একটি অ্যাপ ধারণা।">A simple idea for managing shared living expenses.</p><a class="project-link" href="https://github.com/dosomething111000-wq" target="_blank" rel="noopener">GitHub ↗</a></article>
+   <article class="card reveal"><div class="card-icon">🌐</div><h3>Personal Website</h3><p data-en="My own online space to share my identity and work." data-bn="নিজের পরিচয় ও কাজ তুলে ধরার ব্যক্তিগত ওয়েবসাইট।">My own online space to share my identity and work.</p><a class="project-link" href="#home">Explore ↗</a></article>
+  </div>
+ </div>
+</section>
+
+<section id="gallery">
+ <div class="container">
+  <div class="section-head reveal">
+   <div class="eyebrow">Memories & moments</div>
+   <h2 data-en="My Gallery" data-bn="আমার গ্যালারি">My Gallery</h2>
+  </div>
+  <div class="gallery-note reveal">
+   <div style="font-size:35px">🖼️</div>
+   <p data-en="Your photos and memories can be added here later." data-bn="এখানে পরবর্তীতে তোমার ছবি ও স্মৃতি যোগ করতে পারবে।">Your photos and memories can be added here later.</p>
+  </div>
+ </div>
+</section>
+
+<section id="contact">
+ <div class="container">
+  <div class="contact-box reveal">
+   <div class="eyebrow" data-en="Let's connect" data-bn="যোগাযোগ">Let's connect</div>
+   <h2 data-en="Get In Touch" data-bn="আমার সঙ্গে যোগাযোগ করুন">Get In Touch</h2>
+   <p class="section-desc" data-en="Have an idea, a question or want to collaborate? Find me through my social profiles." data-bn="কোনো আইডিয়া, প্রশ্ন বা একসঙ্গে কাজ করার ইচ্ছা থাকলে আমার সোশ্যাল প্রোফাইলে যোগাযোগ করতে পারো।">Have an idea, a question or want to collaborate? Find me through my social profiles.</p>
+   <div class="contact-links">
+    <a class="btn primary" href="https://github.com/dosomething111000-wq" target="_blank" rel="noopener">GitHub ↗</a>
+    <a class="btn" href="#" onclick="alert('Add your Facebook profile link here.');return false;">Facebook</a>
+    <a class="btn" href="mailto:">Email</a>
+   </div>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="container">
+  <p>© <span id="year"></span> MD Hossain. <span data-en="All rights reserved." data-bn="সর্বস্বত্ব সংরক্ষিত।">All rights reserved.</span></p>
+  <p style="margin-top:8px"><strong>Developed &amp; Crafted by MJH</strong></p>
+ </div>
+</footer>
+
+<script>
+const body = document.body;
+const langBtn = document.getElementById('langBtn');
+const themeBtn = document.getElementById('themeBtn');
+const menuBtn = document.getElementById('menuBtn');
+const navlinks = document.getElementById('navlinks');
+
+let language = localStorage.getItem('mjh-language') || 'en';
+let theme = localStorage.getItem('mjh-theme') || 'dark';
+
+function applyLanguage(){
+ document.documentElement.lang = language;
+ body.classList.toggle('bn',language === 'bn');
+ document.querySelectorAll('[data-en]').forEach(el=>{
+  el.textContent = el.dataset[language];
+ });
+ langBtn.textContent = language === 'en' ? 'বাংলা' : 'English';
+ localStorage.setItem('mjh-language',language);
+}
+function applyTheme(){
+ body.classList.toggle('light',theme === 'light');
+ themeBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
+ localStorage.setItem('mjh-theme',theme);
+}
+langBtn.addEventListener('click',()=>{
+ language = language === 'en' ? 'bn' : 'en';
+ applyLanguage();
+});
+themeBtn.addEventListener('click',()=>{
+ theme = theme === 'dark' ? 'light' : 'dark';
+ applyTheme();
+});
+menuBtn.addEventListener('click',()=>navlinks.classList.toggle('open'));
+navlinks.querySelectorAll('a').forEach(a=>{
+ a.addEventListener('click',()=>navlinks.classList.remove('open'));
+});
+document.getElementById('year').textContent = new Date().getFullYear();
+
+const observer = new IntersectionObserver(entries=>{
+ entries.forEach(entry=>{
+  if(entry.isIntersecting){
+   entry.target.classList.add('show');
+   observer.unobserve(entry.target);
+  }
+ });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+applyLanguage();
+applyTheme();
+</script>
+</body>
+  </html>
